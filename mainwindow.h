@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QtGui>
+#include <QtMaemo5/QMaemo5InformationBox>
 
 namespace Ui {
    class MainWindow;
@@ -28,7 +29,7 @@ public:
 private:
    Ui::MainWindow *ui;
 private slots:
-   void umwandeln();
+   void transform();
    void reset();
 };
 

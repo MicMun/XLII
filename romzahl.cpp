@@ -1,17 +1,20 @@
 #include "romzahl.h"
 
+// Constructor: new roman number with value = 0
 RomZahl::RomZahl()
 {
    arabian = 0;
    toRom();
 }
 
+// Constructor: new roman number with value = z, z is an arabian number
 RomZahl::RomZahl(int z)
 {
    arabian = z;
    toRom();
 }
 
+// Constructor: new roman number with value = r, r is a roman number
 RomZahl::RomZahl(QString r)
 {
    roman = r;
@@ -19,16 +22,19 @@ RomZahl::RomZahl(QString r)
    toRom();
 }
 
+// Returns the arabian number of the RomZahl-Object
 QString RomZahl::getArabian()
 {
    return QString::number(arabian);
 }
 
+// Returns the roman number of the RomZahl-Object
 QString RomZahl::getRom()
 {
    return roman;
 }
 
+// Transform the roman number in an arabian number
 void RomZahl::toArabian() throw (QString)
 {
    int j;
@@ -48,7 +54,7 @@ void RomZahl::toArabian() throw (QString)
             break;
          }
       if (j == 7)
-         throw("FEHLER: Keine gueltige roemische Zahl {" + roman + "}");
+         throw(QObject::tr("ERROR: Not a valid roman number {%1}").arg(roman));
    }
 
    for (j = 1; j < stellen; j++)
@@ -61,6 +67,7 @@ void RomZahl::toArabian() throw (QString)
    for (j = 0; j < stellen; j++) arabian += hilfe[j];
 }
 
+// Transform the arabian number in a roman number
 void RomZahl::toRom()
 {
    QString roemZiffern[] = {"M", "CM", "D", "CD", "C", "XC", "L", "XL",

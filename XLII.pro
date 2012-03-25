@@ -28,6 +28,10 @@ HEADERS += mainwindow.h \
     romzahl.h
 FORMS += mainwindow.ui
 
+QT += maemo5
+
+TRANSLATIONS = mytr_de.ts
+
 # Please do not modify the following two lines. Required for deployment.
 include(deployment.pri)
 qtcAddDeployment()
@@ -39,3 +43,6 @@ OTHER_FILES += \
     qtc_packaging/debian_fremantle/control \
     qtc_packaging/debian_fremantle/compat \
     qtc_packaging/debian_fremantle/changelog
+
+RESOURCES += \
+    translate.qrc

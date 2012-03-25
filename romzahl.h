@@ -1,10 +1,11 @@
 #ifndef ROMZAHL_H
 #define ROMZAHL_H
 
-#include <QString>
+#include <QtCore>
 
-class RomZahl
+class RomZahl : QObject
 {
+   Q_OBJECT
 public:
    RomZahl();
    RomZahl(int z);

@@ -4,47 +4,54 @@
 #include <QtCore/QCoreApplication>
 #include "romzahl.h"
 
+// Constructor: New MainWindow
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("XLII"));
+    setWindowTitle(tr("XLII")); // Title
 
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(umwandeln()));
+    // connects the button and the menu-item with the slots
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(transform()));
     connect(ui->actionReset, SIGNAL(triggered()), this, SLOT(reset()));
 }
 
+// Destructor
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+// Clears the input and the output fields
 void MainWindow::reset()
 {
    ui->lineEdit->setText(QString());
    ui->label->setText(QString("   "));
 }
 
-void MainWindow::umwandeln()
+// Transforms the input in the way it will be selected.
+void MainWindow::transform()
 {
    QString in = ui->lineEdit->text();
 
+   // arabian to roman number is selected
    if (ui->radioButton->isChecked() && !in.isNull() && !in.isEmpty()) {
       bool ok;
-      int z = in.toInt(&ok);
+      int z = in.toInt(&ok); // input as number
       if (ok) {
          RomZahl r(z);
          ui->label->setText(r.getRom());
       } else {
-         QMessageBox::critical(this, tr("FEHLER"), tr("Keine gültige Zahl"),
-                               QMessageBox::Ok);
+         QMaemo5InformationBox::information (this, tr("Not a valid number"),
+                                             1000);
       }
+   // roman to arabian number is selected
    } else if (ui->radioButton_2->isChecked() && !in.isNull() && !in.isEmpty()) {
       try {
          RomZahl r(in);
          ui->label->setText(r.getArabian());
-      } catch (QString msg) {
-         QMessageBox::critical(this, tr("FEHLER"), msg, QMessageBox::Ok);
+      } catch (QString msg) { // if no valid roman number
+         QMaemo5InformationBox::information (this, msg, 1000);
       }
    }
 }

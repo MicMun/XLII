@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/" lang="de">
+        <file alias="mytr_de">mytr_de.qm</file>
+    </qresource>
+</RCC>
