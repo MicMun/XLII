@@ -1,10 +1,13 @@
 ﻿XLII
 
+Calculates the roman or arabian number of the input.
+
 Dependencies:
 
 The app is a Qt-App for Maemo5 (N900). It needs the Qt SDK 1.2 to compile.
 
 License:
+Copyright 2011 by MicMun 
 
 XLII is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
